@@ -285,11 +285,11 @@ if search_icao:
 # Create sidebar scroll options
 # create_scroll_item(region, 'JGP', dct_jgp, lst_jgp, search_icao)
 create_scroll_item(region, 'Japan', dct_jpn, lst_jpn, search_icao)
-create_scroll_item(region, 'China', dct_chn, lst_chn, search_icao)
+#create_scroll_item(region, 'China', dct_chn, lst_chn, search_icao)
 create_scroll_item(region, 'Philippines', dct_phn, lst_phn, search_icao)
 create_scroll_item(region, 'Korea', dct_kor, lst_kor, search_icao)
 create_scroll_item(region, 'S/SE Asia', dct_asia, lst_asia, search_icao)
-create_scroll_item(region, 'ETOPS', dct_etps, lst_etps, search_icao)
+#create_scroll_item(region, 'ETOPS', dct_etps, lst_etps, search_icao)
 create_scroll_item(region, 'MASTER LIST', dct_master, lst_master, search_icao)
 
 
