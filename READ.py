@@ -100,10 +100,10 @@ def connect_gs():
     dct = {}
     dct['jpn'] = [x for x in df_master_list['JPN'] if str(x) != 'nan']
     dct['chn'] = [x for x in df_master_list['CHN'] if str(x) != 'nan']
-    dct['asia'] = [x for x in df_master_list['ASIA'] if str(x) != 'nan']
     dct['phn'] = [x for x in df_master_list['PHN'] if str(x) != 'nan']
     dct['kor'] = [x for x in df_master_list['KOR'] if str(x) != 'nan']
-    dct['etps'] = [x for x in df_master_list['ETPS'] if str(x) != 'nan']
+    dct['asn'] = [x for x in df_master_list['ASN'] if str(x) != 'nan']
+    dct['etp'] = [x for x in df_master_list['ETP'] if str(x) != 'nan']
     dct['master'] = [x for x in df_master_list['MASTER'] if str(x) != 'nan']
 
     return dct
@@ -216,7 +216,8 @@ def create_scroll_item(region, duty, dct, lst, search_icao):
     if region == duty:
         i = 0
         while i <= len(dct)-1:
-            cols = st.sidebar.columns([.5,.75,1,1])
+        ##debug    cols = st.sidebar.columns([.5,.75,1,1])
+            cols = st.columns([.5,.75,1,1])
             cols[0].markdown(f'**{list(dct.keys())[i]}**')
             if cols[1].button('Radar', key=i+10000):
                 radar_button(lst[i], dct)
@@ -232,7 +233,8 @@ def create_scroll_item(region, duty, dct, lst, search_icao):
 def create_search_item(search_icao, dct):
     
     
-    cols = st.sidebar.columns([.5,.75,1,1])
+    ## debugcols = st.sidebar.columns([.5,.75,1,1])
+    cols = st.columns([.5,.75,1,1])
     cols[0].markdown(f'**{search_icao}**')
     if cols[1].button('Radar'):
         radar_button(search_icao, dct)
@@ -250,19 +252,19 @@ dct_duty = connect_gs()
 # Build duty lists
 lst_jpn = dct_duty.get('jpn')
 lst_chn = dct_duty.get('chn')
-lst_asia = dct_duty.get('asia')
+lst_asn = dct_duty.get('asn')
 lst_phn = dct_duty.get('phn')
 lst_kor = dct_duty.get('kor')
-lst_etps = dct_duty.get('etps')
+lst_etp = dct_duty.get('etp')
 lst_master = dct_duty.get('master')
 
 # Build the dictionaries
 dct_jpn = create_dct(lst_jpn)
 dct_chn = create_dct(lst_chn)
-dct_asia = create_dct(lst_asia)
+dct_asn = create_dct(lst_asn)
 dct_phn = create_dct(lst_phn)
 dct_kor = create_dct(lst_kor)
-dct_etps = create_dct(lst_etps)
+dct_etp = create_dct(lst_etp)
 dct_master = create_dct(lst_master)
 
 if search_icao:
@@ -285,11 +287,11 @@ if search_icao:
 # Create sidebar scroll options
 # create_scroll_item(region, 'JGP', dct_jgp, lst_jgp, search_icao)
 create_scroll_item(region, 'Japan', dct_jpn, lst_jpn, search_icao)
-#create_scroll_item(region, 'China', dct_chn, lst_chn, search_icao)
+create_scroll_item(region, 'China', dct_chn, lst_chn, search_icao)
 create_scroll_item(region, 'Philippines', dct_phn, lst_phn, search_icao)
 create_scroll_item(region, 'Korea', dct_kor, lst_kor, search_icao)
-create_scroll_item(region, 'S/SE Asia', dct_asia, lst_asia, search_icao)
-#create_scroll_item(region, 'ETOPS', dct_etps, lst_etps, search_icao)
+create_scroll_item(region, 'S/SE Asia', dct_asn, lst_asn, search_icao)
+create_scroll_item(region, 'ETOPS', dct_etp, lst_etp, search_icao)
 create_scroll_item(region, 'MASTER LIST', dct_master, lst_master, search_icao)
 
 
