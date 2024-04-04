@@ -53,7 +53,7 @@ color: #000000
 
 # Default Page
 
-st.markdown('**Last Update To Duty Lists:** 2021-06-03')
+st.markdown('**Last Update To Duty Lists:** 2024-04-04')
 
 @st.cache
 def create_dct(lst_icao):
